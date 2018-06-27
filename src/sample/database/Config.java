@@ -1,8 +1,6 @@
 package sample.database;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class Config {
@@ -40,6 +38,24 @@ public class Config {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+    public static void saveProperties() {
+        try {
+            Properties properties = new Properties();
+            properties.setProperty("DB_HOST", "localhost");
+            properties.setProperty("DB_PORT", "3306");
+            properties.setProperty("DB_NAME", "");
+            properties.setProperty("DB_USER", "");
+            properties.setProperty("DB_USER_PASSWORD", "");
+            properties.setProperty("DB_ROOT", "");
+            properties.setProperty("DB_ROOT_PASSWORD", "");
+            OutputStream propertiesFile = new FileOutputStream(CONFIG_FILE);
+            properties.store(propertiesFile, "This is an optional header comment string");
+        }
+        catch (Exception e ) {
+            e.printStackTrace();
         }
     }
 }

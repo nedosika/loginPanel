@@ -13,6 +13,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
         primaryStage.setTitle("Login Panel");
+        primaryStage.setResizable(false);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.getIcons().add(new Image("/sample/assets/icon.png"));
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();

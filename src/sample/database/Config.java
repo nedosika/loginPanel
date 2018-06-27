@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
-    private static final String CONFIG_FILE = "settings.cfg";
+    private static final String CONFIG_FILE = "F:\\#PROJECTS\\#JAVA\\loginPanel\\src\\sample\\database\\settings.cfg";
 
     public static String DB_HOST;
     public static int DB_PORT;

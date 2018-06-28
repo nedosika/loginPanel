@@ -15,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Login Panel");
         primaryStage.setResizable(false);
         primaryStage.setAlwaysOnTop(true);
-        primaryStage.getIcons().add(new Image("/sample/assets/icon.png"));
+        primaryStage.getIcons().add(new Image("/sample/assets/login.png"));
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
     }

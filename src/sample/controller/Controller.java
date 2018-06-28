@@ -30,6 +30,9 @@ public class Controller {
     @FXML
     public Button btnSignIn;
 
+    @FXML
+    public Button btnSettings;
+
     public void onBtnSignInAction(ActionEvent actionEvent) {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
 
@@ -40,9 +43,7 @@ public class Controller {
             System.out.println("login ok!");
             btnSignIn.getScene().getWindow().hide();
             User.setCurrentUser(user);
-            showApplication(user);
-
-
+            showApplication();
         }
         else {
             System.out.println("login failed");
@@ -53,13 +54,28 @@ public class Controller {
     }
 
     public void onBtnSettingsAction(ActionEvent actionEvent) {
+        btnSettings.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/settings.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("/sample/assets/settings.png"));
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 
     public void onBtnSignUpAction(ActionEvent actionEvent) {
         System.out.println("tst");
     }
 
-    private void showApplication(User user){
+    private void showApplication(){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/application.fxml"));
 

@@ -44,16 +44,14 @@ public class Config {
         }
     }
 
-    public static void saveProperties() {
+    public static void saveProperties(String host, String port, String db, String login, String password) {
         try {
             Properties properties = new Properties();
-            properties.setProperty("DB_HOST", "localhost");
-            properties.setProperty("DB_PORT", "3306");
-            properties.setProperty("DB_NAME", "");
-            properties.setProperty("DB_USER", "");
-            properties.setProperty("DB_USER_PASSWORD", "");
-            properties.setProperty("DB_ROOT", "");
-            properties.setProperty("DB_ROOT_PASSWORD", "");
+            properties.setProperty("DB_HOST", host);
+            properties.setProperty("DB_PORT", port);
+            properties.setProperty("DB_NAME", db);
+            properties.setProperty("DB_USER", login);
+            properties.setProperty("DB_USER_PASSWORD", password);
             OutputStream propertiesFile = new FileOutputStream(CONFIG_FILE);
             properties.store(propertiesFile, "This is an optional header comment string");
         }

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import sample.database.DataBaseHandler;
@@ -32,10 +33,15 @@ public class Controller {
     public void onBtnSignInAction(ActionEvent actionEvent) {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
 
-        if (dataBaseHandler.signInUser(new User(txtLogin.getText().trim(), txtPassword.getText().trim()))){
+        User user = new User(txtLogin.getText().trim(), txtPassword.getText().trim());
+
+
+        if (dataBaseHandler.signInUser(user)){
             System.out.println("login ok!");
             btnSignIn.getScene().getWindow().hide();
-            showApplication();
+            User.setCurrentUser(user);
+            showApplication(user);
+
 
         }
         else {
@@ -53,7 +59,7 @@ public class Controller {
         System.out.println("tst");
     }
 
-    private void showApplication(){
+    private void showApplication(User user){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/application.fxml"));
 
@@ -65,6 +71,9 @@ public class Controller {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.setTitle("Hello " + User.getCurrentUser().getLogin());
+        stage.getIcons().add(new Image("/sample/assets/home.png"));
+        stage.setMaximized(true);
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }

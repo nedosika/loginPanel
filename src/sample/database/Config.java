@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 public class Config {
-    private static final String CONFIG_FILE = "F:\\#PROJECTS\\#JAVA\\loginPanel\\src\\sample\\database\\settings.cfg";
+    private static final String CONFIG_FILE = "src/sample/settings.cfg";
 
     public static String DB_HOST;
     public static int DB_PORT;
@@ -21,6 +21,9 @@ public class Config {
         try {
             propertiesFile = new FileInputStream(CONFIG_FILE);
             properties.load(propertiesFile);
+
+            //properties.load(getClass().getResourceAsStream(CONFIG_FILE));
+
             DB_HOST = properties.getProperty("DB_HOST");
             DB_PORT = Integer.parseInt(properties.getProperty("DB_PORT"));
             DB_NAME = properties.getProperty("DB_NAME");

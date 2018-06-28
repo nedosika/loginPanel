@@ -1,10 +1,20 @@
 package sample.database;
 
-public class User {
+public class User{
     private String login;
     private String password;
     private boolean active;
     private String role;
+
+    private static User currentUser = null;
+
+    public static User getCurrentUser(){
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user){
+        currentUser = user;
+    }
 
     public User(String login, String name) {
         this.login = login;

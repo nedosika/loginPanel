@@ -75,7 +75,6 @@ public class Controller {
     }
 
     public void onBtnSignUpAction(ActionEvent actionEvent) {
-        System.out.println("tst");
     }
 
     private void showApplication(){

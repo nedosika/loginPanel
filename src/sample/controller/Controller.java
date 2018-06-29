@@ -1,22 +1,22 @@
 package sample.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.database.DataBaseHandler;
 import sample.database.User;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Controller {
     @FXML
@@ -38,7 +38,6 @@ public class Controller {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
 
         User user = new User(txtLogin.getText().trim(), txtPassword.getText().trim());
-
 
         if (dataBaseHandler.signInUser(user)){
             System.out.println("login ok!");
@@ -95,8 +94,27 @@ public class Controller {
         stage.getIcons().add(new Image("/sample/assets/home.png"));
         stage.setMaximized(true);
         stage.setScene(new Scene(root));
+        stage.setOnCloseRequest(e ->{
+            e.consume();
+            closeApplication(stage);
+        });
         stage.showAndWait();
     }
+
+    private void closeApplication(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                "Do you want to exit?",
+                ButtonType.YES, ButtonType.NO);
+
+        Optional result = alert.showAndWait();
+        if (result.get() == ButtonType.YES){
+            //... user chose YES
+            stage.close();
+        } else {
+            //... user chose NO or closed the dialog
+        }
+    }
+
 
     public void txtLoginPasswordOnKeyPressed(KeyEvent keyEvent) {
         if(!txtLogin.getText().equals("") && !txtPassword.getText().equals("")){

@@ -44,16 +44,26 @@ public class Config {
         }
     }
 
-    public static void saveProperties(String host, String port, String db, String login, String password) {
+    public static void setProperties(String host, String port, String db, String login, String password){
+        DB_HOST = host;
+        DB_PORT = Integer.parseInt(port);
+        DB_NAME = db;
+        DB_USER = login;
+        DB_USER_PASSWORD = password;
+    }
+
+    public static void save() {
         try {
             Properties properties = new Properties();
-            properties.setProperty("DB_HOST", host);
-            properties.setProperty("DB_PORT", port);
-            properties.setProperty("DB_NAME", db);
-            properties.setProperty("DB_USER", login);
-            properties.setProperty("DB_USER_PASSWORD", password);
+            properties.setProperty("DB_HOST", DB_HOST);
+            properties.setProperty("DB_PORT", "" + DB_PORT);
+            properties.setProperty("DB_NAME", DB_NAME);
+            properties.setProperty("DB_USER", DB_USER);
+            properties.setProperty("DB_USER_PASSWORD", DB_USER_PASSWORD);
             OutputStream propertiesFile = new FileOutputStream(CONFIG_FILE);
             properties.store(propertiesFile, "This is an optional header comment string");
+            propertiesFile.flush();
+            propertiesFile.close();
         }
         catch (Exception e ) {
             e.printStackTrace();

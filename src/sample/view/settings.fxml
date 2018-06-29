@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="255.0" minWidth="480.0" prefHeight="255.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="255.0" minWidth="480.0" prefHeight="255.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SettingsController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -23,12 +28,17 @@
                               <TextField fx:id="txtDbHost" prefHeight="25.0" prefWidth="200.0" promptText="Database Host" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0" />
                               <TextField fx:id="txtDbPort" prefHeight="25.0" prefWidth="200.0" promptText="Database Port" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="70.0" />
                               <TextField fx:id="txtDbName" prefHeight="25.0" prefWidth="200.0" promptText="Database Name" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
+                              <Label layoutX="30.0" layoutY="6.0" text="Database Host:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="3.0" />
+                              <Label layoutX="30.0" layoutY="53.0" text="Database Port:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0" />
+                              <Label layoutX="30.0" layoutY="103.0" text="Database Name:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="99.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
                               <TextField fx:id="txtDbLogin" prefHeight="25.0" prefWidth="200.0" promptText="Database login" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0" />
                               <PasswordField fx:id="txtDbPassword" layoutX="15.0" layoutY="70.0" prefHeight="25.0" prefWidth="158.0" promptText="Database Password" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="70.0" />
+                              <Label layoutX="15.0" layoutY="6.0" text="Database Login:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="3.0" />
+                              <Label layoutX="15.0" layoutY="53.0" text="Database Password:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="50.0" />
                            </children>
                         </AnchorPane>
                      </children>

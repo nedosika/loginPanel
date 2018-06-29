@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.database.Config;
 
 import java.util.ResourceBundle;
@@ -33,19 +34,20 @@ public class SettingsController {
 
     @FXML
     void btnSaveAction(ActionEvent event) {
-        Config.saveProperties(
+        Config.setProperties(
                 txtDbHost.getText(),
                 txtDbPort.getText(),
                 txtDbName.getText(),
                 txtDbLogin.getText(),
                 txtDbPassword.getText());
+        Config.save();
 
-        System.exit(0);
+        btnSave.getScene().getWindow().hide();
     }
 
     @FXML
     void btnCancelAction(ActionEvent event) {
-
+        btnCancel.getScene().getWindow().hide();
     }
 
     @FXML

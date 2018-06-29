@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.database.DataBaseHandler;
 import sample.database.User;
@@ -54,7 +55,7 @@ public class Controller {
     }
 
     public void onBtnSettingsAction(ActionEvent actionEvent) {
-        btnSettings.getScene().getWindow().hide();
+        //btnSettings.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/settings.fxml"));
 
@@ -68,6 +69,9 @@ public class Controller {
         Stage stage = new Stage();
         stage.getIcons().add(new Image("/sample/assets/settings.png"));
         stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setMinHeight(280);
+        stage.setMinWidth(480);
         stage.showAndWait();
     }
 

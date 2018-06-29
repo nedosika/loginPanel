@@ -54,7 +54,6 @@ public class Controller {
     }
 
     public void onBtnSettingsAction(ActionEvent actionEvent) {
-        //btnSettings.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/view/settings.fxml"));
 
@@ -75,6 +74,23 @@ public class Controller {
     }
 
     public void onBtnSignUpAction(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/view/signUp.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("/sample/assets/signUp.png"));
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        //stage.setMinHeight(280);
+        //stage.setMinWidth(480);
+        stage.showAndWait();
     }
 
     private void showApplication(){

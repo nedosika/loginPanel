@@ -18,7 +18,7 @@ public class DataBaseHandler {
             return false;
         }
 
-        String queryString = "SELECT * FROM users WHERE login =? AND password =?";
+        String queryString = "SELECT * FROM users WHERE login =? AND password =? AND active = 1";
         try (PreparedStatement prSt = getDbConnection().prepareStatement(queryString)) {
             prSt.setString(1, user.getLogin());
             prSt.setString(2, user.getPassword());
@@ -33,5 +33,24 @@ public class DataBaseHandler {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public boolean signUpUser(User user){
+        String queryString = "INSERT INTO users (login, password, email) VALUES (?, ?, ?)";
+        try (PreparedStatement prSt = getDbConnection().prepareStatement(queryString)) {
+            prSt.setString(1, user.getLogin());
+            prSt.setString(2, user.getPassword());
+            prSt.setString(3, user.getEmail());
+            prSt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            return true;
+        }
+
     }
 }
